@@ -4,7 +4,7 @@ metadata:
   labels:
     k8s-app: oauth2-proxy
   name: oauth2-proxy
-  namespace: spire-server
+  namespace: tornjak
 spec:
   type: ClusterIP
   ports:

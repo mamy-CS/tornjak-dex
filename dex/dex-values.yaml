@@ -39,8 +39,8 @@ config:
     http: 0.0.0.0:8080 # port dex is going to listen on for clients to connect to
   # oauth client config
   staticClients:
-  - id: kasten
+  - id: tornjak
     name: OAuth2Proxy
     redirectURIs:
     - http://oauth2-proxy.tornjak:4180/oauth2/callback # oAuth2 proxy redirect url
-    secret: kastensecret
+    secret: tornjaksecret

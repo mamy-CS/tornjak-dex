@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tornjak
-          image: docker.io/mohammedmunirabdi/tornjak-multiarch:v1.8
+          image: docker.io/mohammedmunirabdi/tornjak-frontend-multiarch:v1.8
           ports:
             - name: http
               containerPort: 8080
