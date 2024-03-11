@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: oauth2-proxy
+  name: oauth2-proxy
+  namespace: spire-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: oauth2-proxy
+  template:
+    metadata:
+      labels:
+        k8s-app: oauth2-proxy
+    spec:
+      containers:
+      - args:
+        - --provider=oidc
+        - --redirect-url=http://oauth2-proxy.tornjak:4180/oauth2/callback
+        - --oidc-issuer-url=http://dex.dex:5556/dex # dex url
+        - --scope=openid groups profile email
+        - --cookie-secure=false
+        - --email-domain=*
+        - --upstream=http://tornjak-actual.tornjak:8080 # application url
+        - --http-address=0.0.0.0:4180
+        - --ssl-insecure-skip-verify
+        - --pass-access-token
+        env:
+        - name: OAUTH2_PROXY_CLIENT_ID
+          value: "tornjak"
+        - name: OAUTH2_PROXY_CLIENT_SECRET
+          value: "tornjaksecret"
+        - name: OAUTH2_PROXY_COOKIE_SECRET
+          value: "SeIU0b9YYP99rszpC+lifw=="
+        image: quay.io/oauth2-proxy/oauth2-proxy:latest
+        imagePullPolicy: Always
+        name: oauth2-proxy
+        ports:
+        - containerPort: 4180
+          protocol: TCP
+

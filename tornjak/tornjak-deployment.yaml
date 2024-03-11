@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tornjak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tornjak
+  template:
+    metadata:
+      labels:
+        app: tornjak
+    spec:
+      containers:
+        - name: tornjak
+          image: docker.io/mohammedmunirabdi/tornjak-multiarch:v1.8
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
