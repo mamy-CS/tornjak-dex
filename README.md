@@ -133,9 +133,9 @@
 
 1. (In a separate terminal) Initiate *service/tornjak* port-forward
     ```
-    kubectl port-forward service/tornjak -n tornjak 9090:80
+    kubectl port-forward service/tornjak -n tornjak 3000:80
     ```
-1. Open your browser to: http://127.0.0.1:9090/ and attempt to login to your application
+1. Open your browser to: http://127.0.0.1:3000/ and attempt to login to your application
 
 1. Patch the *service/tornjak* configuration to use OAuth-Proxy port and selector
     ```
@@ -145,9 +145,9 @@
 
 1. Stop (`Ctrl+C`) and restart *service/tornjak* port-forward
     ```
-    kubectl port-forward service/tornjak -n tornjak 9090:80
+    kubectl port-forward service/tornjak -n tornjak 3000:80
     ```
-1. Open your browser again to: http://127.0.0.1:9090/
+1. Open your browser again to: http://127.0.0.1:3000/
 
 1. Create Service
    ```
@@ -156,10 +156,10 @@
 
 1. Stop (`Ctrl+C`) and restart *service/tornjak* port-forward a final time
    ```
-   kubectl port-forward service/tornjak -n tornjak 9090:80
+   kubectl port-forward service/tornjak -n tornjak 3000:80
    ```
 
-1. Open your browser again to: http://127.0.0.1:9090/
+1. Open your browser again to: http://127.0.0.1:3000/
 
 1. Tornjak Should be up!
 
