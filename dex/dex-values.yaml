@@ -28,6 +28,8 @@ config:
     type: ldap
   # dex config
   issuer: http://dex.dex:5556/dex # url dex will be available on
+  # claimMapping:
+  #   realm_access: groups
   logger:
     format: text
     level: info
@@ -37,10 +39,13 @@ config:
     type: memory # in memory storage
   web:
     http: 0.0.0.0:8080 # port dex is going to listen on for clients to connect to
+    allowedOrigins: ['*']
   # oauth client config
   staticClients:
   - id: tornjak
     name: OAuth2Proxy
     redirectURIs:
     - http://oauth2-proxy.tornjak:4180/oauth2/callback # oAuth2 proxy redirect url
+    - http://127.0.0.1:3000
+    - http://localhost:3000
     secret: tornjaksecret
