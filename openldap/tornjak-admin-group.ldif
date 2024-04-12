@@ -1,5 +1,5 @@
-dn: cn=tornjakAdmins,ou=users,dc=example,dc=org
-cn: tornjakAdmins
+dn: cn=admin,ou=users,dc=example,dc=org
+cn: admin
 objectClass: groupOfNames
-member: cn=admin,ou=users,dc=example,dc=org
-member: cn=viewer,ou=users,dc=example,dc=org
+member: cn=user1admin,ou=users,dc=example,dc=org
+member: cn=user2admin,ou=users,dc=example,dc=org

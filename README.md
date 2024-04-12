@@ -20,7 +20,7 @@
 1. Create Namespace and Secret​
     ```
     kubectl create ns openldap
-    kubectl create secret generic openldap --from-literal=adminpassword=adminpassword --from-literal=users=admin,viewer --from-literal=passwords=admin,viewer -n openldap
+    kubectl create secret generic openldap --from-literal=adminpassword=adminpassword --from-literal=users=user1admin,user2admin,user1viewer,user2viewer --from-literal=passwords=user1,user2,user1,user2 -n openldap
     ```
 
 1. Create Deployment​
@@ -49,11 +49,13 @@
 3. Add a Group​
     ```
     ldapadd -x -H ldap://127.0.0.1:1389 -D "cn=admin,dc=example,dc=org" -w adminpassword -f tornjak-admin-group.ldif
+    ldapadd -x -H ldap://127.0.0.1:1389 -D "cn=viewer,dc=example,dc=org" -w adminpassword -f tornjak-viewer-group.ldif
     ```
 
 4. Verify LDIF Import
     ```
     ldapsearch -x -H ldap://127.0.0.1:1389 -b dc=example,dc=org -D 'cn=admin,dc=example,dc=org' -w adminpassword
+    ldapsearch -x -H ldap://127.0.0.1:1389 -b dc=example,dc=org -D 'cn=viewer,dc=example,dc=org' -w adminpassword
     ```
 
 ## Dex

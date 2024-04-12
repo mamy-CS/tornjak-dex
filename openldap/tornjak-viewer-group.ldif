@@ -1,0 +1,5 @@
+dn: cn=viewer,ou=users,dc=example,dc=org
+cn: viewer
+objectClass: groupOfNames
+member: cn=user1viewer,ou=users,dc=example,dc=org
+member: cn=user2viewer,ou=users,dc=example,dc=org
